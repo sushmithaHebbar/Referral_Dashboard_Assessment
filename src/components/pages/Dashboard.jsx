@@ -1,13 +1,13 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import Navbar from '../src/components/Navbar';
-import Footer from '../src/components/Footer';
-import DashboardHeader from '../src/components/dashboard/DashboardHeader';
-import OverviewSection from '../src/components/dashboard/OverviewSection';
-import ServiceSummarySection from '../src/components/dashboard/ServiceSummarySection';
-import ShareReferralSection from '../src/components/dashboard/ShareReferralSection';
-import AllReferralsTable from '../src/components/dashboard/AllReferralsTable';
+import Navbar from '../Navbar';
+import Footer from '../Footer';
+import DashboardHeader from '../dashboard/DashboardHeader';
+import OverviewSection from '../dashboard/OverviewSection';
+import ServiceSummarySection from '../dashboard/ServiceSummarySection';
+import ShareReferralSection from '../dashboard/ShareReferralSection';
+import AllReferralsTable from '../dashboard/AllReferralsTable';
 
 const Dashboard = () => {
   const navigate = useNavigate();
