@@ -9,7 +9,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Redirect to '/' if user is already authenticated
+  // redirected to '/' if user is authenticated
   useEffect(() => {
     const token = Cookies.get('jwt_token');
     if (token) {
@@ -35,10 +35,10 @@ const Login = () => {
 
       if (response.ok && responseJson.data?.token) {
         const token = responseJson.data.token;
-        Cookies.set('jwt_token', token, { expires: 7 }); // expires in 7 days
+        Cookies.set('jwt_token', token, { expires: 7 }); 
         navigate('/', { replace: true });
       } else {
-        // The error text "Invalid email or password" is displayed on the login page.
+        // The error message is displayed on the login page.
         const msg = responseJson.message || 'Invalid email or password';
         setErrorMsg(msg);
       }
