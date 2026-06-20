@@ -783,9 +783,7 @@ button, input, select {
 
 .back-to-dashboard-link {
   font-weight: 600;
-  color: var(--text-muted);
-  display: inline-flex;
-  align-items: center;
+  text-align: center;
   font-size: 0.875rem;
 }
 
@@ -968,17 +966,13 @@ button, input, select {
   flex-direction: column;
   align-items: center;
   gap: 0.75rem;
-  background-color: var(--bg-card);
-  padding: 2.5rem;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--border-color);
   animation: fadeIn 0.4s ease-out;
 }
 
 .not-found-code {
-  font-size: 4rem;
-  color: var(--primary);
+  font-size: 1.5rem;
+  text-align: center;
+  color: #000000;
   font-weight: 800;
   line-height: 1;
 }

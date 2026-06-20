@@ -10,19 +10,15 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Public Routes */}
         <Route path="/login" element={<Login />} />
 
-        {/* Protected Routes */}
         <Route element={<ProtectedRoute />}>
           <Route path="/" element={<Dashboard />} />
-          <Route path="/referral/:id" element={<ReferralDetail />} />
+          <Route path="/referral/:id" element={<ReferralDetail/>} />
         </Route>
 
-        {/* Optional Redirection Route */}
-        <Route path="/dashboard/referrals" element={<Navigate to="/" replace />} />
+        <Route path="/dashboard/referrals" element={<Navigate to="/" replace/>} />
 
-        {/* Fallback Public Route */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
