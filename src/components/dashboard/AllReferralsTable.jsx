@@ -14,6 +14,7 @@ const AllReferralsTable = ({
   endIndex,
   formatDate,
   formatProfit,
+  tableLoading,
 }) => {
   const navigate = useNavigate();
 
@@ -53,8 +54,25 @@ const AllReferralsTable = ({
         </div>
       </div>
 
-      <div className="table-container">
-        <table className="referrals-table">
+      <div className="table-container" style={{ position: 'relative' }}>
+        {tableLoading && (
+          <div className="table-loading-overlay" style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(255, 255, 255, 0.7)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 5,
+            borderRadius: 'var(--radius-md)'
+          }}>
+            <div className="loading-spinner" style={{ width: '30px', height: '30px' }}></div>
+          </div>
+        )}
+        <table className="referrals-table" style={{ opacity: tableLoading ? 0.55 : 1, transition: 'opacity 0.15s ease' }}>
           <thead>
             <tr>
               <th scope="col">NAME</th>
