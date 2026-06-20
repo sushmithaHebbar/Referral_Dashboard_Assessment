@@ -6,7 +6,7 @@ const NotFound = () => {
       <div className="not-found-container">
         <h1 className="not-found-code">404</h1>
         <p className="not-found-message">404 - Page Not Found</p>
-        <Link to="/" className="back-to-dashboard-link btn-try" style={{ marginTop: '0.5rem' }}>
+        <Link to="/" className="back-to-dashboard-link" style={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }}>
           Back to dashboard
         </Link>
       </div>

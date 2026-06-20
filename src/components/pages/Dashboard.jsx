@@ -23,6 +23,8 @@ const Dashboard = () => {
   const [errorMsg, setErrorMsg] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [sortOrder, setSortOrder] = useState('desc'); // 'desc' is default
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+  const [tableLoading, setTableLoading] = useState(false);
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
@@ -32,8 +34,12 @@ const Dashboard = () => {
   const [copiedCode, setCopiedCode] = useState(false);
 
   // Fetch referrals data from API
-  const fetchData = useCallback(async (searchVal, sortVal) => {
-    setLoading(true);
+  const fetchData = useCallback(async (searchVal, sortVal, isFirst = false) => {
+    if (isFirst) {
+      setLoading(true);
+    } else {
+      setTableLoading(true);
+    }
     setErrorMsg('');
     const token = Cookies.get('jwt_token');
 
@@ -87,19 +93,23 @@ const Dashboard = () => {
       setErrorMsg(err.message || 'Failed to fetch dashboard data.');
     } finally {
       setLoading(false);
+      setTableLoading(false);
+      if (isFirst) {
+        setIsInitialLoad(false);
+      }
     }
   }, [navigate]);
 
   // Debounced search trigger
   useEffect(() => {
     const handler = setTimeout(() => {
-      fetchData(searchQuery, sortOrder);
-    }, 300);
+      fetchData(searchQuery, sortOrder, isInitialLoad);
+    }, isInitialLoad ? 0 : 300);
 
     return () => {
       clearTimeout(handler);
     };
-  }, [searchQuery, sortOrder, fetchData]);
+  }, [searchQuery, sortOrder, fetchData, isInitialLoad]);
 
   // Handle Copy Actions
   const handleCopyLink = () => {
@@ -207,6 +217,7 @@ const Dashboard = () => {
               endIndex={endIndex}
               formatDate={formatDate}
               formatProfit={formatProfit}
+              tableLoading={tableLoading}
             />
           </>
         )}
