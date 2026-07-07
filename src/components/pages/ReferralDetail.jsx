@@ -39,7 +39,7 @@ const ReferralDetail = () => {
 
         let match = null;
         if (resData) {
-          // Robust parsing logic
+          //  parsing logic
           if (resData.id && String(resData.id) === String(id)) {
             match = resData;
           } else if (resData.referrals && Array.isArray(resData.referrals)) {
